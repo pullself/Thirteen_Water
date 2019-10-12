@@ -1,0 +1,30 @@
+QLabel#vertical{
+    border:1px solid;
+}
+QWidget#role_data_wi{
+    border:1px solid;
+}
+QLabel#role_header{
+    border:1px solid;
+}
+QLabel#role_name{
+    border:1px solid;
+}
+QLabel#icon{
+    border:1px solid;
+}
+QWidget#bigcard{
+    border:1px solid;
+}
+QLabel#rate{
+    border:1px solid;
+}
+QPushButton#button{
+    border:1px solid;
+}
+QLabel#role_special{
+    border:1px solid;
+}
+QLabel#card{
+    border:1px solid;
+}

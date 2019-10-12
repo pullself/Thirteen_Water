@@ -1,0 +1,15 @@
+QWidget#top{
+    border-bottom:1px solid;
+}
+QLabel#logo{
+    border:1px solid;
+}
+QPushButton#box{
+    background-color:rgba(124,124,124,80);
+}
+QPushButton#box:hover{
+    background-color:rgba(94,94,94,100);
+}
+QPushButton#box:pressed{
+    background-color:rgba(84,84,84,100);
+}
