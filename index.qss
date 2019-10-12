@@ -8,7 +8,6 @@ QWidget#login{
 }
 QLineEdit#input{
     border:1px solid;
-    border-radius:35px;
     font-size:32px;
 }
 QWidget#top{
@@ -16,7 +15,6 @@ QWidget#top{
 }
 QLabel#imp_label{
     border:1px solid;
-    border-radius:83px;
 }
 QLabel#logo{
     border:1px solid;
@@ -25,9 +23,7 @@ QPushButton#joke{
     font-size:24px;
 }
 QPushButton#button{
-    font-size:32px;
     border:1px solid;
-    border-radius:35px;
     background-color:#333643;
     color:#FFFFFF;
 }

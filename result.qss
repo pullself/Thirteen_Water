@@ -11,7 +11,6 @@ QWidget#role_head{
     border:1px solid;
 }
 QWidget#role_detail{
-    border:1px solid;
 }
 QLabel#role_special{
     border:1px solid;

@@ -3,8 +3,9 @@ import sys
 
 
 class Index(QWidget):
-    def __init__(self):
-        super(Index, self).__init__()
+    show_mainindex_sg = pyqtSignal()
+    def __init__(self, parent=None):
+        super(Index, self).__init__(parent)
         self.desktop = QApplication.desktop()
         self.screenRect = self.desktop.screenGeometry()
         self.h = self.screenRect.height()
@@ -21,7 +22,6 @@ class Index(QWidget):
         self.imp_la = QLabel(self.ind_wi)
         self.account_le = QLineEdit(self.ind_wi)
         self.psw_le = QLineEdit(self.ind_wi)
-        # self.setFixedSize(self.width(), self.height())
         self.set_ui()
         with open('index.qss', 'r') as f:
             self.setStyleSheet(f.read())
@@ -35,14 +35,14 @@ class Index(QWidget):
         self.logo_la.setObjectName('logo')
         self.logo_la.resize(65 * self.zr, 65 * self.zr)
         self.logo_la.move(29 * self.xr, 16 * self.yr)
-        effect1 = QGraphicsDropShadowEffect()
-        effect1.setOffset(10, 10)
-        effect1.setColor(QColor(0, 0, 0, 80))
-        effect1.setBlurRadius(20)
+        effect = QGraphicsDropShadowEffect()
+        effect.setOffset(10, 10)
+        effect.setColor(QColor(0, 0, 0, 80))
+        effect.setBlurRadius(20)
         self.ind_wi.setObjectName('login')
         self.ind_wi.resize(327 * self.xr, 388 * self.yr)
         self.ind_wi.move(300 * self.xr, 150 * self.yr)
-        self.ind_wi.setGraphicsEffect(effect1)
+        self.ind_wi.setGraphicsEffect(effect)
         self.joke_but.setObjectName('joke')
         self.joke_but.resize(130 * self.xr, 30 * self.yr)
         self.joke_but.move(76 * self.xr, 234 * self.yr)
@@ -60,6 +60,7 @@ class Index(QWidget):
         self.imp_la.setObjectName('imp_label')
         self.imp_la.resize(100 * self.zr, 100 * self.zr)
         self.imp_la.move(115 * self.xr + 100 * (self.xr - self.zr) / 2, 15 * self.yr)
+        self.imp_la.setStyleSheet('border-radius:{}px;'.format(self.zr * 49))
         self.account_le.setObjectName('input')
         self.account_le.setTextMargins(20, 0, 0, 0)
         self.account_le.resize(213 * self.xr, 45 * self.yr)
@@ -71,10 +72,13 @@ class Index(QWidget):
         self.psw_le.move(59 * self.xr, 181 * self.yr)
         self.psw_le.setPlaceholderText('密码')
         self.psw_le.setEchoMode(QLineEdit.Password)
+        self.ind_wi.setStyleSheet('#input{border-radius:' + str(self.zr * 20) + 'px;}' + '#button{border-radius:' + str(
+            self.zr * 20) + 'px;'+'font-size:'+str(int(self.zr*18))+'px;}')
 
     def login(self):
         account_p = self.account_le.text()
         psw_p = self.psw_le.text()
+        self.show_mainindex_sg.emit()
 
 
 if __name__ == '__main__':
