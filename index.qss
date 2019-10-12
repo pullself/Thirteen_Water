@@ -1,0 +1,39 @@
+QWidget#index{
+
+}
+QWidget#login{
+    border:1px solid;
+    border-radius:80px;
+    background-color:rgba(94,94,94,80);
+}
+QLineEdit#input{
+    border:1px solid;
+    border-radius:35px;
+    font-size:32px;
+}
+QWidget#top{
+    border-bottom:1px solid;
+}
+QLabel#imp_label{
+    border:1px solid;
+    border-radius:83px;
+}
+QLabel#logo{
+    border:1px solid;
+}
+QPushButton#joke{
+    font-size:24px;
+}
+QPushButton#button{
+    font-size:32px;
+    border:1px solid;
+    border-radius:35px;
+    background-color:#333643;
+    color:#FFFFFF;
+}
+QPushButton#button:hover{
+    background-color:#575B6E;
+}
+QPushButton#button:pressed{
+    background-color:#202129;
+}

@@ -1,0 +1,72 @@
+from PyQt5.Qt import *
+import sys
+
+
+class Home(QWidget):
+    def __init__(self):
+        super(Home, self).__init__()
+        self.setWindowTitle('Home')
+        self.setObjectName('home')
+        self.resize(930, 640)
+        self.setFixedSize(self.width(), self.height())
+        self.set_ui()
+
+    def set_ui(self):
+        vertical_img = QLabel(self)
+        vertical_img.setObjectName('vertical')
+        vertical_img.resize(205, 534)
+        vertical_img.move(79, 39)
+        role_data_wi = QWidget(self)
+        role_data_wi.setObjectName('role_data_wi')
+        role_data_wi.resize(552, 534)
+        role_data_wi.move(320, 39)
+        rankexit_but = QPushButton(self)
+        rankexit_but.setObjectName('resexit')
+        rankexit_but.resize(38, 38)
+        rankexit_but.move(852, 26)
+        role_header = QLabel(role_data_wi)
+        role_header.setObjectName('role_header')
+        role_header.resize(65, 65)
+        role_header.move(28, 10)
+        role_name = QLabel(role_data_wi)
+        role_name.setObjectName('role_name')
+        role_name.resize(129, 43)
+        role_name.move(129, 21)
+        role_rank = QPushButton(role_data_wi)
+        role_rank.setObjectName('role_rank')
+        role_rank.resize(120, 31)
+        role_rank.move(269, 27)
+        ranking = QPushButton(role_data_wi)
+        ranking.setObjectName('ranking')
+        ranking.resize(120, 31)
+        ranking.move(399, 27)
+        role_details = QWidget(role_data_wi)
+        role_details.setObjectName('role_details')
+        role_details.resize(500, 435)
+        role_details.move(28, 89)
+        bigcard_la = QLabel(role_details)
+        bigcard_la.setObjectName('icon')
+        bigcard_la.resize(120, 23)
+        bigcard_la.move(12, 34)
+        bigcard_wi = QWidget(role_details)
+        bigcard_wi.setObjectName('bigcard')
+        bigcard_wi.resize(477, 120)
+        bigcard_wi.move(12, 84)
+        rate_la = QLabel(role_details)
+        rate_la.setObjectName('icon')
+        rate_la.resize(120, 23)
+        rate_la.move(12, 134)
+        rate_wi = QLabel(role_details)
+        rate_wi.setObjectName('rate')
+        rate_wi.resize(477, 120)
+        rate_wi.move(12, 184)
+
+
+if __name__ == '__main__':
+    if __name__ == '__main__':
+        app = QApplication(sys.argv)
+        with open('result.qss', 'r') as f:
+            app.setStyleSheet(f.read())
+        window = Home()
+        window.show()
+        sys.exit(app.exec())

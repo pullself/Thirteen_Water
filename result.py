@@ -1,0 +1,107 @@
+from PyQt5.Qt import *
+import sys
+
+
+class Result(QWidget):
+    def __init__(self):
+        super(Result, self).__init__()
+        self.setWindowTitle('Result')
+        self.setObjectName('result')
+        self.resize(930, 640)
+        self.setFixedSize(self.width(), self.height())
+        self.set_ui()
+
+    def set_ui(self):
+        back1_wi = QWidget(self)
+        back1_wi.setObjectName('back1')
+        back1_wi.resize(793, 534)
+        back1_wi.move(69, 53)
+        back_x = 69
+        back_y = 53
+        role1 = QWidget(back1_wi)
+        role1.setObjectName('role')
+        role1.resize(716, 87)
+        role1.move(108 - back_x, 77 - back_y)
+        role2 = QWidget(back1_wi)
+        role2.setObjectName('role')
+        role2.resize(716, 87)
+        role2.move(108 - back_x, 303 - back_y)
+        vs_img = QLabel(back1_wi)
+        vs_img.setObjectName('vs_img')
+        vs_img.resize(160, 100)
+        vs_img.move(383 - back_x, 184 - back_y)
+        res_img = QLabel(back1_wi)
+        res_img.setObjectName('res_img')
+        res_img.resize(122, 100)
+        res_img.move(309 - back_x, 437 - back_y)
+        res_detail = QLabel(back1_wi)
+        res_detail.setObjectName('res_detail')
+        res_detail.resize(112, 80)
+        res_detail.move(553 - back_x, 447 - back_y)
+        resexit_but = QPushButton(self)
+        resexit_but.setObjectName('resexit')
+        resexit_but.resize(38, 38)
+        resexit_but.move(834, 46)
+        role1_head = QLabel(role1)
+        role1_head.setObjectName('role_head')
+        role1_head.resize(80, 80)
+        role1_head.move(2, 4)
+        role1_detail = QWidget(role1)
+        role1_detail.setObjectName('role_detail')
+        role1_detail.resize(606, 87)
+        role1_detail.move(110, 0)
+        role1_special = QLabel(role1_detail)
+        role1_special.setObjectName('role_special')
+        role1_special.resize(88, 36)
+        role1_special.move(10, 26)
+        for i in range(1, 4):
+            exec('role1_card{}=QLabel(role1_detail)'.format(i))
+            exec('role1_card{}.setObjectName("card")'.format(i))
+            exec('role1_card{}.resize(46,67)'.format(i))
+            exec('role1_card{}.move(108+({}-1)*20,10)'.format(i, i))
+        for i in range(4, 9):
+            exec('role1_card{}=QLabel(role1_detail)'.format(i))
+            exec('role1_card{}.setObjectName("card")'.format(i))
+            exec('role1_card{}.resize(46,67)'.format(i))
+            exec('role1_card{}.move(239+({}-4)*20,10)'.format(i, i))
+        for i in range(9, 14):
+            exec('role1_card{}=QLabel(role1_detail)'.format(i))
+            exec('role1_card{}.setObjectName("card")'.format(i))
+            exec('role1_card{}.resize(46,67)'.format(i))
+            exec('role1_card{}.move(416+({}-9)*20,10)'.format(i, i))
+        role2_head = QLabel(role2)
+        role2_head.setObjectName('role_head')
+        role2_head.resize(80, 80)
+        role2_head.move(2, 4)
+        role2_detail = QWidget(role2)
+        role2_detail.setObjectName('role_detail')
+        role2_detail.resize(606, 87)
+        role2_detail.move(110, 0)
+        role2_special = QLabel(role2_detail)
+        role2_special.setObjectName('role_special')
+        role2_special.resize(88, 36)
+        role2_special.move(10, 26)
+        for i in range(1, 4):
+            exec('role2_card{}=QLabel(role2_detail)'.format(i))
+            exec('role2_card{}.setObjectName("card")'.format(i))
+            exec('role2_card{}.resize(46,67)'.format(i))
+            exec('role2_card{}.move(108+({}-1)*20,10)'.format(i, i))
+        for i in range(4, 9):
+            exec('role2_card{}=QLabel(role2_detail)'.format(i))
+            exec('role2_card{}.setObjectName("card")'.format(i))
+            exec('role2_card{}.resize(46,67)'.format(i))
+            exec('role2_card{}.move(239+({}-4)*20,10)'.format(i, i))
+        for i in range(9, 14):
+            exec('role2_card{}=QLabel(role2_detail)'.format(i))
+            exec('role2_card{}.setObjectName("card")'.format(i))
+            exec('role2_card{}.resize(46,67)'.format(i))
+            exec('role2_card{}.move(416+({}-9)*20,10)'.format(i, i))
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    with open('result.qss', 'r') as f:
+        app.setStyleSheet(f.read())
+    window = Result()
+    window.show()
+    sys.exit(app.exec())
