@@ -47,7 +47,7 @@ class Result(QWidget):
         back_y = 53
         self.resexit_but.setObjectName('resexit')
         self.resexit_but.resize(self.zr * 38, self.zr * 38)
-        self.resexit_but.move(self.xr * 834, self.yr * 46)
+        self.resexit_but.move(self.xr * 834, self.yr * 36)
         self.resexit_but.clicked.connect(self.result_exit)
         self.role1.setObjectName('role')
         self.role1.resize(self.xr * 716, self.yr * 87)
