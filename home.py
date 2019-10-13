@@ -4,6 +4,8 @@ import sys
 
 class Home(QWidget):
     home_exit_sg = pyqtSignal()
+    rank_sg = pyqtSignal()
+    single_rank_sg = pyqtSignal()
 
     def __init__(self, parent=None):
         super(Home, self).__init__(parent)
@@ -35,16 +37,22 @@ class Home(QWidget):
         self.setWindowTitle('Home')
         self.setObjectName('home')
         self.resize(self.w, self.h)
+        effect = QGraphicsDropShadowEffect()
+        effect.setOffset(10, 10)
+        effect.setColor(QColor(0, 0, 0, 80))
+        effect.setBlurRadius(20)
         self.vertical_img.setObjectName('vertical')
         self.vertical_img.resize(self.xr * 205, self.yr * 534)
         self.vertical_img.move(self.xr * 79, self.yr * 39)
         self.role_data_wi.setObjectName('role_data_wi')
         self.role_data_wi.resize(self.xr * 552, self.yr * 534)
         self.role_data_wi.move(self.xr * 320, self.yr * 39)
+        self.role_data_wi.setGraphicsEffect(effect)
         self.rankexit_but.setObjectName('resexit')
         self.rankexit_but.resize(self.zr * 38, self.zr * 38)
-        self.rankexit_but.move(self.xr * 852, self.yr * 18)
+        self.rankexit_but.move(self.xr * 852, self.yr * 22)
         self.rankexit_but.clicked.connect(self.home_exit)
+        self.rankexit_but.setStyleSheet('border-radius:{}px;'.format(self.zr * 18))
         self.role_header.setObjectName('role_header')
         self.role_header.resize(self.zr * 70, self.zr * 70)
         self.role_header.move(self.xr * 38, self.yr * 10)
@@ -52,14 +60,26 @@ class Home(QWidget):
         self.role_name.resize(self.xr * 129, self.yr * 43)
         self.role_name.move(self.xr * 129, self.yr * 21)
         self.role_name.setStyleSheet('border-radius:{}px;'.format(self.zr * 18))
+        effect1 = QGraphicsDropShadowEffect()
+        effect1.setOffset(10, 10)
+        effect1.setColor(QColor(0, 0, 0, 80))
+        effect1.setBlurRadius(20)
+        effect2 = QGraphicsDropShadowEffect()
+        effect2.setOffset(10, 10)
+        effect2.setColor(QColor(0, 0, 0, 80))
+        effect2.setBlurRadius(20)
         self.role_rank.setObjectName('button')
         self.role_rank.resize(self.xr * 120, self.yr * 31)
         self.role_rank.move(self.xr * 269, self.yr * 27)
         self.role_rank.setText('个人战绩')
+        self.role_rank.setGraphicsEffect(effect1)
+        self.role_rank.clicked.connect(self.show_single_rank)
         self.ranking.setObjectName('button')
         self.ranking.resize(self.xr * 120, self.yr * 31)
         self.ranking.move(self.xr * 399, self.yr * 27)
         self.ranking.setText('排行榜')
+        self.ranking.setGraphicsEffect(effect2)
+        self.ranking.clicked.connect(self.show_rank)
         self.role_details.setObjectName('role_details')
         self.role_details.resize(self.xr * 500, self.yr * 435)
         self.role_details.move(self.xr * 28, self.yr * 89)
@@ -83,8 +103,8 @@ class Home(QWidget):
                 t = 1
             exec('self.role_card{}=QLabel(self.bigcard_wi)'.format(i))
             exec('self.role_card{}.setObjectName("card")'.format(i))
-            exec('self.role_card{}.resize(self.xr*40,self.yr*56)'.format(i))
-            exec('self.role_card{}.move(self.xr*(xp+({}-t)*20),self.yr*28)'.format(i, i))
+            exec('self.role_card{}.resize(self.xr*40,self.yr*60)'.format(i))
+            exec('self.role_card{}.move(self.xr*(xp+({}-t)*20),self.yr*26)'.format(i, i))
         self.role_special.setObjectName('role_special')
         self.role_special.resize(self.xr * 65, self.yr * 32)
         self.role_special.move(self.xr * 15, self.yr * 40)
@@ -98,11 +118,18 @@ class Home(QWidget):
         self.rate_wi.move(self.xr * 12, self.yr * 284)
         self.role_data_wi.setStyleSheet(
             '#role_data_wi{border-radius:' + str(self.zr * 20) + 'px;}#role_header{border-radius:' + str(
-                self.zr * 35) + 'px;}#button{border-radius:' + str(self.zr * 15) + 'px;}#icon{border-radius:' + str(
-                self.zr * 10) + 'px;}')
+                self.zr * 35) + 'px;}#button{border-radius:' + str(self.zr * 15) + 'px;font-size:' + str(
+                int(self.zr * 15)) + 'px;}#icon{border-radius:' + str(
+                self.zr * 10) + 'px;font-size:' + str(int(self.zr * 15)) + 'px;}')
 
     def home_exit(self):
         self.home_exit_sg.emit()
+
+    def show_rank(self):
+        self.rank_sg.emit()
+
+    def show_single_rank(self):
+        self.single_rank_sg.emit()
 
 
 if __name__ == '__main__':

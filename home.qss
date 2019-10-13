@@ -3,15 +3,18 @@ QLabel#vertical{
 }
 QWidget#role_data_wi{
     border:1px solid;
+    background-color:#fcf9ea;
 }
 QLabel#role_header{
     border:1px solid;
+    border-image:url(./resource/image/head_ex.jpg) no-repeat;
 }
 QLabel#role_name{
     border:1px solid;
 }
 QLabel#icon{
     border:1px solid;
+    background-color:#ffc5a1;
 }
 QWidget#bigcard{
     border:1px solid;
@@ -21,10 +24,24 @@ QLabel#rate{
 }
 QPushButton#button{
     border:1px solid;
+    background-color:#f8a978;
+    color:#282828;
+}
+QPushButton#button:hover{
+    border:1px solid;
+    background-color:#666666;
+}
+QPushButton#button:pressed{
+    border:1px solid;
+    background-color:#555555;
 }
 QLabel#role_special{
     border:1px solid;
 }
 QLabel#card{
     border:1px solid;
+}
+QPushButton#resexit{
+    border:1px solid;
+    border-image: url('./resource/image/exit.jpg') no-repeat;
 }

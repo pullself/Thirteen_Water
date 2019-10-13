@@ -2,12 +2,11 @@ from PyQt5.Qt import *
 import sys
 
 
-class Index(QWidget):
-    show_mainindex_sg = pyqtSignal()
-    show_register_sg = pyqtSignal()
+class Register(QWidget):
+    register_ok_sg = pyqtSignal()
 
     def __init__(self, parent=None):
-        super(Index, self).__init__(parent)
+        super(Register, self).__init__(parent)
         self.desktop = QApplication.desktop()
         self.screenRect = self.desktop.screenGeometry()
         self.h = self.screenRect.height()
@@ -18,19 +17,18 @@ class Index(QWidget):
         self.top_wi = QWidget(self)
         self.logo_la = QLabel(self.top_wi)
         self.ind_wi = QWidget(self)
-        self.login_but = QPushButton(self.ind_wi)
-        self.joke_but = QPushButton(self.ind_wi)
         self.register_but = QPushButton(self.ind_wi)
         self.imp_la = QLabel(self.ind_wi)
         self.account_le = QLineEdit(self.ind_wi)
         self.psw_le = QLineEdit(self.ind_wi)
+        self.name_le = QLineEdit(self.ind_wi)
         self.set_ui()
         with open('index.qss', 'r') as f:
             self.setStyleSheet(f.read())
 
     def set_ui(self):
-        self.setWindowTitle('Login')
-        self.setObjectName('index')
+        self.setWindowTitle('Register')
+        self.setObjectName('register')
         self.resize(self.w, self.h)
         self.top_wi.setObjectName('top')
         self.top_wi.resize(930 * self.xr, 95 * self.yr)
@@ -45,21 +43,11 @@ class Index(QWidget):
         self.ind_wi.resize(327 * self.xr, 388 * self.yr)
         self.ind_wi.move(300 * self.xr, 150 * self.yr)
         self.ind_wi.setGraphicsEffect(effect)
-        self.joke_but.setObjectName('joke')
-        self.joke_but.resize(130 * self.xr, 30 * self.yr)
-        self.joke_but.move(76 * self.xr, 234 * self.yr)
-        self.joke_but.setFlat(True)
-        self.joke_but.setText('忘记密码？我也没办法')
-        self.login_but.setObjectName('button')
-        self.login_but.move(64 * self.xr, 260 * self.yr)
-        self.login_but.resize(202 * self.xr, 45 * self.yr)
-        self.login_but.setText('登陆')
-        self.login_but.clicked.connect(self.login)
         self.register_but.setObjectName('button')
         self.register_but.move(64 * self.xr, 315 * self.yr)
         self.register_but.resize(202 * self.xr, 45 * self.yr)
-        self.register_but.setText('注册')
-        self.register_but.clicked.connect(self.show_register)
+        self.register_but.setText('注册新用户')
+        self.register_but.clicked.connect(self.register)
         self.imp_la.setObjectName('imp_label')
         self.imp_la.resize(100 * self.zr, 100 * self.zr)
         self.imp_la.move(115 * self.xr + 100 * (self.xr - self.zr) / 2, 15 * self.yr)
@@ -75,25 +63,23 @@ class Index(QWidget):
         self.psw_le.move(59 * self.xr, 181 * self.yr)
         self.psw_le.setPlaceholderText('密码')
         self.psw_le.setEchoMode(QLineEdit.Password)
+        self.name_le.setObjectName('input')
+        self.name_le.setTextMargins(20, 0, 0, 0)
+        self.name_le.resize(213 * self.xr, 45 * self.yr)
+        self.name_le.move(59 * self.xr, 236 * self.yr)
+        self.name_le.setPlaceholderText('昵称')
+        self.name_le.setEchoMode(QLineEdit.Password)
         self.ind_wi.setStyleSheet('#input{border-radius:' + str(self.zr * 20) + 'px;}' + '#button{border-radius:' + str(
             self.zr * 20) + 'px;' + 'font-size:' + str(int(self.zr * 18)) + 'px;}')
 
-    def login(self):
-        self.account_p = self.account_le.text()
-        self.psw_p = self.psw_le.text()
-        t = True
-        if t:
-            self.show_mainindex_sg.emit()
-        else:
-            self.account_le.setStyleSheet('border:4px solid;border-color:red;')
-            self.account_le.setPlaceholderText('账号不存在')
-
-    def show_register(self):
-        self.show_register_sg.emit()
+    def register(self):
+        account_p = self.account_le.text()
+        psw_p = self.psw_le.text()
+        self.register_ok_sg.emit()
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    window = Index()
+    window = Register()
     window.showFullScreen()
     sys.exit(app.exec())

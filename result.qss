@@ -1,11 +1,14 @@
 QWidget#back{
     border:1px solid;
+    background-color:#fcf9ea;
 }
-QLabel#header{
+QPushButton#resexit{
     border:1px solid;
+    border-image: url('./resource/image/exit.jpg') no-repeat;
 }
 QWidget#role{
     border:1px solid;
+    background-color:#f5f0e3;
 }
 QWidget#role_head{
     border:1px solid;
@@ -14,6 +17,8 @@ QWidget#role_detail{
 }
 QLabel#role_special{
     border:1px solid;
+    background-color:#888888;
+    color:#ffffff;
 }
 QLabel#card{
     border:1px solid;
