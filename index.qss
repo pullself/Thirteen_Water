@@ -12,12 +12,15 @@ QLineEdit#input{
 }
 QWidget#top{
     border-bottom:1px solid;
-}
-QLabel#imp_label{
-    border:1px solid;
+    background-color:#ffeecc;
 }
 QLabel#logo{
     border:1px solid;
+    border-image:url(./resource/image/head.jpg) no-repeat;
+}
+QLabel#imp_label{
+    border:1px solid;
+    border-image:url(./resource/image/head_ex.jpg) no-repeat;
 }
 QPushButton#joke{
     font-size:24px;
@@ -33,3 +36,4 @@ QPushButton#button:hover{
 QPushButton#button:pressed{
     background-color:#202129;
 }
+
