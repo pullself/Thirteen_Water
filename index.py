@@ -81,10 +81,15 @@ class Index(QWidget):
     def login(self):
         self.account_p = self.account_le.text()
         self.psw_p = self.psw_le.text()
-        t = True
+        if self.account_p == 'pullself':
+            t = True
+        else:
+            t = False
         if t:
             self.show_mainindex_sg.emit()
         else:
+            self.account_le.clear()
+            self.psw_le.clear()
             self.account_le.setStyleSheet('border:4px solid;border-color:red;')
             self.account_le.setPlaceholderText('账号不存在')
 

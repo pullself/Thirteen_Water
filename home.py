@@ -118,7 +118,7 @@ class Home(QWidget):
         self.rate_wi.move(self.xr * 12, self.yr * 284)
         self.role_data_wi.setStyleSheet(
             '#role_data_wi{border-radius:' + str(self.zr * 20) + 'px;}#role_header{border-radius:' + str(
-                self.zr * 35) + 'px;}#button{border-radius:' + str(self.zr * 15) + 'px;font-size:' + str(
+                self.zr * 30) + 'px;}#button{border-radius:' + str(self.zr * 15) + 'px;font-size:' + str(
                 int(self.zr * 15)) + 'px;}#icon{border-radius:' + str(
                 self.zr * 10) + 'px;font-size:' + str(int(self.zr * 15)) + 'px;}')
 

@@ -15,6 +15,7 @@ class Search(QWidget):
         self.xr = self.w / 930
         self.yr = self.h / 640
         self.zr = min(self.xr, self.yr)
+        self.info = {}
         self.head = QLabel(self)
         self.search = QLineEdit(self)
         self.butt = QPushButton(self)
