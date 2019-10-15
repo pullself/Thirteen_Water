@@ -224,13 +224,13 @@ def find_info(id, token):
     for i in range(4):
         a = data[i]
         b = []
-        if len(data[i]) == 3:
+        if len(a['card']) == 1:
+            flag_card = a['card'][0].replace("*", '@').split()
+            b.append({'card': flag_card})
+        else:
             for j in range(3):
                 flag_card = a['card'][j].replace("*", '@').split()
                 b.append({'card': flag_card})
-        else:
-            flag_card = a['card'][0].replace("*", '@').split()
-            b.append({'card': flag_card})
         flag = {'name': a['name'], 'score': a['score'], 'cards': b}
         need['details'].append(flag)
     # print(need)
