@@ -106,8 +106,8 @@ def play(token):
             card = card.replace("*", '@')
             hand_card = card.split()
             url = "https://api.shisanshui.rtxux.xyz/game/submit"
-            Weight = pickle.load(open('./resource/model/a.txt', 'rb'))
-            Times = pickle.load(open('./resource/model/b.txt', 'rb'))
+            Weight = pickle.load(open('./model/a.txt', 'rb'))
+            Times = pickle.load(open('./model/b.txt', 'rb'))
             beta = 0.9
             myhand = []
             for i in range(13):
