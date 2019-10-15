@@ -38,7 +38,7 @@ class Index(QWidget):
         self.top_wi.setObjectName('top')
         self.top_wi.resize(930 * self.xr, 95 * self.yr)
         self.logo_la.setObjectName('logo')
-        self.logo_la.resize(65 * self.zr, 65 * self.zr)
+        self.logo_la.resize(65 * self.xr, 65 * self.zr)
         self.logo_la.move(29 * self.xr, 16 * self.yr)
         effect = QGraphicsDropShadowEffect()
         effect.setOffset(10, 10)

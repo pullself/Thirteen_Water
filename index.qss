@@ -15,7 +15,7 @@ QWidget#top{
 }
 QLabel#logo{
     border:1px solid;
-    border-image:url(./resource/image/head.jpg) no-repeat;
+    border-image:url(./resource/image/logo.png) no-repeat;
 }
 QLabel#imp_label{
     border:1px solid;

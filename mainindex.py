@@ -52,7 +52,7 @@ class MainIndex(QWidget):
         self.top_wi.setObjectName('top')
         self.top_wi.resize(self.xr * 930, self.yr * 95)
         self.logo_la.setObjectName('logo')
-        self.logo_la.resize(self.zr * 65, self.zr * 65)
+        self.logo_la.resize(self.xr * 65, self.zr * 65)
         self.logo_la.move(self.xr * 29, self.yr * 16)
         self.manual_but.setObjectName('box')
         self.manual_but.resize(self.xr * 180, self.yr * 320)

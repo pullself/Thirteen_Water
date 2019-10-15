@@ -4,7 +4,7 @@ QWidget#top{
 }
 QLabel#logo{
     border:1px solid;
-    border-image:url(./resource/image/head.jpg) no-repeat;
+    border-image:url(./resource/image/logo.png) no-repeat;
 }
 QPushButton#box{
     border:1px solid #666666;
