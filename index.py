@@ -1,9 +1,11 @@
 from PyQt5.Qt import *
+from Stools import login
 import sys
 
 
+
 class Index(QWidget):
-    show_mainindex_sg = pyqtSignal()
+    show_mainindex_sg = pyqtSignal(int, str)
     show_register_sg = pyqtSignal()
 
     def __init__(self, parent=None):
@@ -24,6 +26,8 @@ class Index(QWidget):
         self.imp_la = QLabel(self.ind_wi)
         self.account_le = QLineEdit(self.ind_wi)
         self.psw_le = QLineEdit(self.ind_wi)
+        self.loading = QLabel(self)
+        self.gif = QMovie('./resource/image/load.gif')
         self.set_ui()
         with open('index.qss', 'r') as f:
             self.setStyleSheet(f.read())
@@ -75,23 +79,31 @@ class Index(QWidget):
         self.psw_le.move(59 * self.xr, 181 * self.yr)
         self.psw_le.setPlaceholderText('密码')
         self.psw_le.setEchoMode(QLineEdit.Password)
+        self.loading.setObjectName('load')
+        self.loading.resize(self.xr *150, self.yr * 150)
+        self.loading.move(self.xr * 760, self.yr * 500)
+        self.loading.setScaledContents(True)
+        self.loading.setMovie(self.gif)
+        self.gif.start()
         self.ind_wi.setStyleSheet('#input{border-radius:' + str(self.zr * 20) + 'px;}' + '#button{border-radius:' + str(
             self.zr * 20) + 'px;' + 'font-size:' + str(int(self.zr * 18)) + 'px;}')
 
     def login(self):
-        self.account_p = self.account_le.text()
-        self.psw_p = self.psw_le.text()
-        if self.account_p == 'pullself':
-            t = True
-        else:
-            t = False
-        if t:
-            self.show_mainindex_sg.emit()
+        account_p = self.account_le.text()
+        psw_p = self.psw_le.text()
+        dic = login(account_p, psw_p)
+        if dic['status'] == 0:
+            self.show_mainindex_sg.emit(dic['data']['user_id'], dic['data']['token'])
+        elif dic['status'] == 1:
+            self.account_le.clear()
+            self.psw_le.clear()
+            self.account_le.setStyleSheet('border:4px solid;border-color:red;')
+            self.account_le.setPlaceholderText('网络超时')
         else:
             self.account_le.clear()
             self.psw_le.clear()
             self.account_le.setStyleSheet('border:4px solid;border-color:red;')
-            self.account_le.setPlaceholderText('账号不存在')
+            self.account_le.setPlaceholderText('账号不存在或密码错误')
 
     def show_register(self):
         self.show_register_sg.emit()

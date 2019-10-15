@@ -1,5 +1,6 @@
 from PyQt5.Qt import *
 import sys
+from Stools import register
 
 
 class Register(QWidget):
@@ -68,14 +69,26 @@ class Register(QWidget):
         self.name_le.resize(213 * self.xr, 45 * self.yr)
         self.name_le.move(59 * self.xr, 236 * self.yr)
         self.name_le.setPlaceholderText('昵称')
-        self.name_le.setEchoMode(QLineEdit.Password)
         self.ind_wi.setStyleSheet('#input{border-radius:' + str(self.zr * 20) + 'px;}' + '#button{border-radius:' + str(
             self.zr * 20) + 'px;' + 'font-size:' + str(int(self.zr * 18)) + 'px;}')
 
     def register(self):
         account_p = self.account_le.text()
         psw_p = self.psw_le.text()
-        self.register_ok_sg.emit()
+        # name_p = self.name_le.text()
+        dic = register(account_p, psw_p)
+        if dic['status'] == 1001:
+            self.account_le.clear()
+            self.psw_le.clear()
+            self.account_le.setStyleSheet('border:4px solid;border-color:red;')
+            self.account_le.setPlaceholderText('账号已存在')
+        elif dic['status'] == 0:
+            self.register_ok_sg.emit()
+        else:
+            self.account_le.clear()
+            self.psw_le.clear()
+            self.account_le.setStyleSheet('border:4px solid;border-color:red;')
+            self.account_le.setPlaceholderText('未知错误')
 
 
 if __name__ == '__main__':
