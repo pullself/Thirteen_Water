@@ -15,7 +15,6 @@ isort==4.3.20
 lazy-object-proxy==1.4.1
 lxml==4.4.1
 mccabe==0.6.1
-mkl-fft
 mkl-random==1.1.0
 mkl-service==2.3.0
 numpy==1.16.5
