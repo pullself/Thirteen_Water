@@ -96,7 +96,6 @@ class SingleRank(QWidget):
         self.single_rk_comeback_sg.emit()
 
     def get_list(self, info):
-        print(info)
         if len(info) >= 4:
             li = info[:4]
             self.inlist = info[4:]

@@ -53,6 +53,7 @@ class Search(QWidget):
         id_p = self.search.text()
         self.search.clear()
         dic = find_info(id_p, self.token)
+        # print(dic)
         if dic['status'] == 0:
             self.search_sg.emit(dic)
         else:

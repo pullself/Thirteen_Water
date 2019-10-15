@@ -15,7 +15,7 @@ def register(ac, psw):
     payload = '{"username":' + '"{}"'.format(ac) + ',"password":' + '"{}"'.format(psw) + '}'
     headers = {'content-type': 'application/json'}
     res = requests.request('POST', url, data=payload, headers=headers)
-    if res == None:
+    if res == '':
         return {"status": 1}
     else:
         return res.json()
@@ -26,7 +26,7 @@ def login(ac, psw):
     payload = '{"username":' + '"{}"'.format(ac) + ',"password":' + '"{}"'.format(psw) + '}'
     headers = {'content-type': 'application/json'}
     res = requests.request('POST', url, data=payload, headers=headers)
-    if res == None:
+    if res == '':
         return {"status": 1}
     else:
         return res.json()
@@ -39,7 +39,6 @@ def srank(id, token):
     response = requests.request("GET", url, headers=headers, params=querystring)
     result = response.text.encode("utf8")
     result = json.loads(result)
-    print(result)
     if result != '':
         status = result['status']
         data = result['data']

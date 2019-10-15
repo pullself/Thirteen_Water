@@ -210,7 +210,6 @@ def find_info(id, token):
         response = requests.request("GET", url, headers=headers)
         result = response.text.encode("utf8")
         result = json.loads(result)
-        # print(result)
         status = result['status']
         data = result['data']
     except:
@@ -225,8 +224,12 @@ def find_info(id, token):
     for i in range(4):
         a = data[i]
         b = []
-        for j in range(3):
-            flag_card = a['card'][j].replace("*", '@').split()
+        if len(data[i]) == 3:
+            for j in range(3):
+                flag_card = a['card'][j].replace("*", '@').split()
+                b.append({'card': flag_card})
+        else:
+            flag_card = a['card'][0].replace("*", '@').split()
             b.append({'card': flag_card})
         flag = {'name': a['name'], 'score': a['score'], 'cards': b}
         need['details'].append(flag)
@@ -234,3 +237,5 @@ def find_info(id, token):
     return need
 
 
+if __name__ == '__main__':
+    print(find_info(12943, '5c65c5fd-904f-4c7b-9979-6d473f91587b'))

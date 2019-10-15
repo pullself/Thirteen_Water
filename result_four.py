@@ -196,6 +196,7 @@ class Result(QWidget):
 
     def set_role(self, info):
         i = 1
+        # print(info)
         for role in info:
             exec('self.role{}_head.setText("{}")'.format(i, role['name']))
             exec('self.role{}_special.setText("{}")'.format(i, str(role['score']) + '分'))
