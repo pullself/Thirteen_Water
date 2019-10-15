@@ -15,6 +15,9 @@ isort==4.3.20
 lazy-object-proxy==1.4.1
 lxml==4.4.1
 mccabe==0.6.1
+mkl-fft==1.0.14
+mkl-random==1.1.0
+mkl-service==2.3.0
 numpy==1.16.5
 parsedatetime==2.4
 pathlib==1.0.1
@@ -24,6 +27,7 @@ pylint==2.3.1
 pyOpenSSL==19.0.0
 PyQt5==5.13.0
 PyQt5-sip==4.19.19
+pyqt5-tools==5.13.0.1.5
 PySocks==1.7.1
 python-dateutil==2.8.0
 python-dotenv==0.10.3
