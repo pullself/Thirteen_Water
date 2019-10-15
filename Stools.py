@@ -1,4 +1,3 @@
-import sys
 import requests
 import json
 
@@ -45,11 +44,10 @@ def srank(id, token):
         status = result['status']
         data = result['data']
         need = {'status': status, 'details': []}
-        for i in range(1):
-            for j in range(20):
-                a = data[j]
-                flag = {'id': a['id'], 'score': a['score'], 'time': a['timestamp']}
-                need['details'].append(flag)
+        for j in range(20):
+            a = data[j]
+            flag = {'id': a['id'], 'score': a['score'], 'time': a['timestamp']}
+            need['details'].append(flag)
     else:
         need = {'status': 1}
     return need
