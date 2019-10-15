@@ -1,9 +1,10 @@
 from PyQt5.Qt import *
 import sys
+from Run import find_info
 
 
 class Search(QWidget):
-    search_sg = pyqtSignal()
+    search_sg = pyqtSignal(dict)
     back_sg = pyqtSignal()
 
     def __init__(self, parent=None):
@@ -15,7 +16,7 @@ class Search(QWidget):
         self.xr = self.w / 930
         self.yr = self.h / 640
         self.zr = min(self.xr, self.yr)
-        self.info = {}
+        self.token = ''
         self.head = QLabel(self)
         self.search = QLineEdit(self)
         self.butt = QPushButton(self)
@@ -26,7 +27,7 @@ class Search(QWidget):
         self.search.setObjectName('search')
         self.search.resize(self.xr * 520, self.yr * 40)
         self.search.move(self.xr * 205, self.yr * 300)
-        self.search.setPlaceholderText('请输入战局id')
+        self.search.setPlaceholderText('请输入战局ID')
         self.search.setTextMargins(20, 0, 0, 0)
         self.search.setStyleSheet('font-size:{}px;border-radius:{}px;'.format(int(self.zr * 16), self.zr * 15))
         self.head.setObjectName('head')
@@ -49,13 +50,21 @@ class Search(QWidget):
             self.zr * 15) + 'px;background-color:#333643;color:#ffffff;}#button:hover{background-color:#575B6E;}#button:pressed{background-color:#202129;}')
 
     def search_for(self):
-        self.id = self.search.text()
-        self.search_sg.emit()
-        # self.search.setStyleSheet('border:4px solid;border-color:red')
-        # self.search.setPlaceholderText('id不存在')
+        id_p = self.search.text()
+        self.search.clear()
+        dic = find_info(id_p, self.token)
+        if dic['status'] == 0:
+            self.search_sg.emit(dic)
+        else:
+            self.search.setStyleSheet('font-size:{}px;border-radius:{}px;border:4px solid;border-color:red'.format(int(self.zr * 16), self.zr * 15))
+            self.search.clear()
+            self.search.setPlaceholderText('ID不存在')
 
     def back_for(self):
         self.back_sg.emit()
+
+    def get_token(self, t):
+        self.token = t
 
 
 if __name__ == '__main__':

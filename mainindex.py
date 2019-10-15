@@ -1,10 +1,11 @@
 from PyQt5.Qt import *
 import sys
 from Stools import change_vertical
+from Run import play
 
 
 class MainIndex(QWidget):
-    auto_pressed_sg = pyqtSignal()
+    auto_pressed_sg = pyqtSignal(dict)
     home_pressed_sg = pyqtSignal()
     search_pressed_sg = pyqtSignal()
 
@@ -17,6 +18,7 @@ class MainIndex(QWidget):
         self.xr = self.w / 930
         self.yr = self.h / 640
         self.zr = min(self.xr, self.yr)
+        self.token = ''
         self.top_wi = QWidget(self)
         self.logo_la = QLabel(self.top_wi)
         self.manual_but = QPushButton(self)
@@ -25,6 +27,8 @@ class MainIndex(QWidget):
         # self.auto_tex = QLabel(self)
         self.home_but = QPushButton(self)
         # self.home_tex = QLabel(self)
+        self.loading = QLabel(self)
+        self.gif = QMovie('./resource/image/load.gif')
         self.set_ui()
         with open('mainindex.qss', 'r') as f:
             self.setStyleSheet(f.read())
@@ -86,15 +90,27 @@ class MainIndex(QWidget):
         # self.home_tex.move(self.xr * 610, self.yr * 152)
         # self.home_tex.setText(change_vertical('常回家看看！'))
         # self.home_tex.setStyleSheet('font-size:{}px;'.format(int(self.zr * 17)))
+        self.loading.setObjectName('load')
+        self.loading.resize(self.xr * 150, self.yr * 150)
+        self.loading.move(self.xr * 760, self.yr * 500)
+        self.loading.setScaledContents(True)
+        self.loading.setMovie(self.gif)
+        self.gif.start()
 
     def auto_press(self):
-        self.auto_pressed_sg.emit()
+        res = play(self.token)
+        if res["status"] == 0:
+            self.auto_pressed_sg.emit(res)
+
 
     def home_press(self):
         self.home_pressed_sg.emit()
 
     def search_press(self):
         self.search_pressed_sg.emit()
+
+    def get_token(self, t):
+        self.token = t
 
 
 if __name__ == '__main__':

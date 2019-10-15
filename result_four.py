@@ -1,5 +1,7 @@
 from PyQt5.Qt import *
 import sys
+import json
+from Stools import change_vertical
 
 
 class Result(QWidget):
@@ -70,7 +72,7 @@ class Result(QWidget):
         self.resexit_but.resize(self.zr * 38, self.zr * 38)
         self.resexit_but.move(self.xr * 834, self.yr * 36)
         self.resexit_but.clicked.connect(self.result_exit)
-        self.resexit_but.setStyleSheet('border-radius:{}px;'.format(self.zr*18))
+        self.resexit_but.setStyleSheet('border-radius:{}px;'.format(self.zr * 18))
         self.role1.setObjectName('role')
         self.role1.resize(self.xr * 716, self.yr * 87)
         self.role1.move(self.xr * (108 - back_x), self.yr * (77 - back_y))
@@ -143,6 +145,27 @@ class Result(QWidget):
             else:
                 xp = 108
                 t = 1
+            if i == 3 or i == 8 or i == 13:
+                exec('self.role1_lv{}=QLabel(self.role1_detail)'.format(i))
+                exec('self.role1_lv{}.resize(self.xr*46,self.yr*67)'.format(i))
+                exec('self.role1_lv{}.move(self.xr*(xp+({}-t)*20)+95,self.yr*10)'.format(i, i))
+                exec('self.role1_lv{}.setStyleSheet("font-size:{}px;")'.format(i, int(self.zr * 17)))
+                exec('self.role1_lv{}.setAlignment(Qt.AlignCenter)'.format(i))
+                exec('self.role2_lv{}=QLabel(self.role2_detail)'.format(i))
+                exec('self.role2_lv{}.resize(self.xr*46,self.yr*67)'.format(i))
+                exec('self.role2_lv{}.move(self.xr*(xp+({}-t)*20)+95,self.yr*10)'.format(i, i))
+                exec('self.role2_lv{}.setStyleSheet("font-size:{}px;")'.format(i, int(self.zr * 17)))
+                exec('self.role2_lv{}.setAlignment(Qt.AlignCenter)'.format(i))
+                exec('self.role3_lv{}=QLabel(self.role3_detail)'.format(i))
+                exec('self.role3_lv{}.resize(self.xr*46,self.yr*67)'.format(i))
+                exec('self.role3_lv{}.move(self.xr*(xp+({}-t)*20)+95,self.yr*10)'.format(i, i))
+                exec('self.role3_lv{}.setStyleSheet("font-size:{}px;")'.format(i, int(self.zr * 17)))
+                exec('self.role3_lv{}.setAlignment(Qt.AlignCenter)'.format(i))
+                exec('self.role4_lv{}=QLabel(self.role4_detail)'.format(i))
+                exec('self.role4_lv{}.resize(self.xr*46,self.yr*67)'.format(i))
+                exec('self.role4_lv{}.move(self.xr*(xp+({}-t)*20)+95,self.yr*10)'.format(i, i))
+                exec('self.role4_lv{}.setStyleSheet("font-size:{}px;")'.format(i, int(self.zr * 17)))
+                exec('self.role4_lv{}.setAlignment(Qt.AlignCenter)'.format(i))
             exec('self.role1_card{}=QLabel(self.role1_detail)'.format(i))
             exec('self.role1_card{}.setObjectName("card")'.format(i))
             exec('self.role1_card{}.resize(self.xr*46,self.yr*67)'.format(i))
@@ -166,20 +189,32 @@ class Result(QWidget):
         self.back1_wi.setStyleSheet(
             '#back{border-radius:' + str(self.zr * 25) + 'px;}#role{border-radius:' + str(
                 self.zr * 18) + 'px;}#role_head{border-radius:' + str(self.zr * 15) + 'px;font-size:' + str(
-                int(self.zr * 16)) + 'px;}#role_special{font-size:' + str(int(self.zr * 14)) + 'px;}')
+                int(self.zr * 20)) + 'px;}#role_special{font-size:' + str(int(self.zr * 18)) + 'px;}')
 
     def result_exit(self):
         self.result_exit_sg.emit()
 
-    # def set_role(self):
-    #     for i in range(1, 14):
-    #         exec('self.role1_card{}.setPixmap(QPixmap("./resource/image/{}.jpg")'.format(i, s))
+    def set_role(self, info):
+        i = 1
+        for role in info:
+            exec('self.role{}_head.setText("{}")'.format(i, role['name']))
+            exec('self.role{}_special.setText("{}")'.format(i, str(role['score']) + '分'))
+            # t = 3
+            j = 1
+            for de in role['cards']:
+                # exec('self.role{}_lv{}.setText("{}")'.format(i, t, de['lv']))
+                for card in de["card"]:
+                    exec('self.role{}_card{}.setPixmap(QPixmap("./resource/image/{}.jpg"))'.format(i, j, card))
+                    j += 1
+                # t += 5
+            i += 1
 
 
 if __name__ == '__main__':
-    if __name__ == '__main__':
-        app = QApplication(sys.argv)
-
-        window = Result()
-        window.showFullScreen()
-        sys.exit(app.exec())
+    with open('suit.json', 'r', encoding='UTF-8') as f:
+        aa = json.load(f)
+    app = QApplication(sys.argv)
+    window = Result()
+    window.set_role(aa)
+    window.showFullScreen()
+    sys.exit(app.exec())

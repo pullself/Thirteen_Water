@@ -1,11 +1,12 @@
 from PyQt5.Qt import *
 import sys
+from Stools import rank, srank
 
 
 class Home(QWidget):
     home_exit_sg = pyqtSignal()
-    rank_sg = pyqtSignal()
-    single_rank_sg = pyqtSignal()
+    rank_sg = pyqtSignal(list)
+    single_rank_sg = pyqtSignal(list)
 
     def __init__(self, parent=None):
         super(Home, self).__init__(parent)
@@ -16,6 +17,8 @@ class Home(QWidget):
         self.xr = self.w / 930
         self.yr = self.h / 640
         self.zr = min(self.xr, self.yr)
+        self.id_p = 0
+        self.token = ''
         self.vertical_img = QLabel(self)
         self.role_data_wi = QWidget(self)
         self.rankexit_but = QPushButton(self)
@@ -126,10 +129,20 @@ class Home(QWidget):
         self.home_exit_sg.emit()
 
     def show_rank(self):
-        self.rank_sg.emit()
+        res = rank()
+        if res['status'] == 0:
+            self.rank_sg.emit(res['details'])
 
     def show_single_rank(self):
-        self.single_rank_sg.emit()
+        res = srank(self.id_p, self.token)
+        if res['status'] == 0:
+            self.single_rank_sg.emit(res['details'])
+
+    def get_id(self, s):
+        self.id_p = s
+
+    def get_token(self, t):
+        self.token = t
 
 
 if __name__ == '__main__':
