@@ -100,7 +100,7 @@ class ResultSingle(QWidget):
             exec('self.role1_card{}=QLabel(self.role1_detail)'.format(i))
             exec('self.role1_card{}.setObjectName("card")'.format(i))
             exec('self.role1_card{}.resize(self.xr*46,self.yr*67)'.format(i))
-            exec('self.role1_card{}.move(self.xr*i*33,self.yr*10)'.format(i, i))
+            exec('self.role1_card{}.move(self.xr*i*33,self.yr*10)'.format(i))
             exec('self.role1_card{}.setScaledContents(True)'.format(i))
             exec('self.role4_card{}=QLabel(self.role4_detail)'.format(i))
             exec('self.role4_card{}.setObjectName("card")'.format(i))
