@@ -122,6 +122,10 @@ class Main(QWidget):
         self.xr = self.w / 930
         self.yr = self.h / 640
         self.zr = min(self.xr, self.yr)
+        self.resize(self.w, self.h)
+        palette = QPalette()
+        palette.setBrush(QPalette.Background, QBrush(QPixmap("./resource/image/back.jpg").scaled(self.size())))
+        self.setPalette(palette)
 
 
 if __name__ == '__main__':

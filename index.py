@@ -3,7 +3,6 @@ from Stools import login
 import sys
 
 
-
 class Index(QWidget):
     show_mainindex_sg = pyqtSignal(int, str)
     show_register_sg = pyqtSignal()
@@ -80,7 +79,7 @@ class Index(QWidget):
         self.psw_le.setPlaceholderText('密码')
         self.psw_le.setEchoMode(QLineEdit.Password)
         self.loading.setObjectName('load')
-        self.loading.resize(self.xr *150, self.yr * 150)
+        self.loading.resize(self.xr * 150, self.yr * 150)
         self.loading.move(self.xr * 760, self.yr * 500)
         self.loading.setScaledContents(True)
         self.loading.setMovie(self.gif)

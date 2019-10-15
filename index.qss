@@ -1,5 +1,4 @@
 QWidget#index{
-
 }
 QWidget#login{
     border:1px solid;

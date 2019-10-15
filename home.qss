@@ -1,5 +1,6 @@
 QLabel#vertical{
     border:1px solid;
+    border-image:url(./resource/image/test.jpg) no-repeat;
 }
 QWidget#role_data_wi{
     border:1px solid;
