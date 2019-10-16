@@ -13,7 +13,7 @@ pip install -r requirements.txt
 ## 编译与运行
 安装完依赖之后可以直接运行source文件夹中的main.py。
 ```
-python main,py
+python main.py
 ```
 可以直接执行run文件夹中的main.exe文件
 ```
