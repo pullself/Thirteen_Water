@@ -1,7 +1,6 @@
-from poker import Card
-from poker import hand
-from poker import Suit
-from poker import Rank
+from card import Card
+from card import Suit
+from card import Rank
 import random
 import math
 import numpy as np

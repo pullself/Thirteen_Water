@@ -2,8 +2,8 @@ from collections.abc import Mapping
 from pathlib import Path
 import attr
 from configparser import ConfigParser
-from .hand import Range
-from .constants import Position
+from hand import Range
+from constants import Position
 
 
 @attr.s(slots=True)
