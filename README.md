@@ -7,4 +7,4 @@
 操作系统：windows或者linux；python版本：3.7以上，依赖windows参照requirements(windows).txt，linux参照requirements.txt
 
 ## 编译与运行
-直接执行main.py程序或者执行main.exe文件
+直接执行source里的main.py程序或者执行run里的main.exe文件
