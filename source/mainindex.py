@@ -1,4 +1,4 @@
-from PyQt5.Qt import *
+from PyQt5.Qt import QWidget, pyqtSignal, QApplication, QLabel, QPushButton, QGraphicsDropShadowEffect, QColor, QMovie
 import sys
 from Stools import change_vertical
 from Run import play
@@ -101,7 +101,6 @@ class MainIndex(QWidget):
         res = play(self.token)
         if res["status"] == 0:
             self.auto_pressed_sg.emit(res)
-
 
     def home_press(self):
         self.home_pressed_sg.emit()

@@ -1,4 +1,4 @@
-from PyQt5.Qt import *
+from PyQt5.Qt import QWidget, pyqtSignal, QApplication, QLabel, QPushButton, QGraphicsDropShadowEffect, QColor, Qt
 import sys
 from Stools import rank, srank
 
@@ -146,8 +146,7 @@ class Home(QWidget):
 
 
 if __name__ == '__main__':
-    if __name__ == '__main__':
-        app = QApplication(sys.argv)
-        window = Home()
-        window.showFullScreen()
-        sys.exit(app.exec())
+    app = QApplication(sys.argv)
+    window = Home()
+    window.showFullScreen()
+    sys.exit(app.exec())
