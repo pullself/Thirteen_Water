@@ -1,4 +1,4 @@
-from PyQt5.Qt import *
+from PyQt5.Qt import QWidget, QApplication, QPalette, QBrush, QPixmap
 from index import Index
 from register import Register
 from mainindex import MainIndex

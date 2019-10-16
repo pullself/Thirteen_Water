@@ -1,4 +1,5 @@
-from PyQt5.Qt import *
+from PyQt5.Qt import QWidget, pyqtSignal, QApplication, QLabel, QPushButton, QGraphicsDropShadowEffect, QColor, Qt, \
+    QPixmap
 import sys
 import json
 from Stools import change_vertical

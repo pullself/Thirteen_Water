@@ -1,4 +1,5 @@
-from PyQt5.Qt import *
+from PyQt5.Qt import QWidget, pyqtSignal, QApplication, QLabel, QPushButton, QGraphicsDropShadowEffect, QColor, \
+    QLineEdit, QMovie
 from Stools import login
 import sys
 

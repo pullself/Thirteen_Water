@@ -1,4 +1,4 @@
-from PyQt5.Qt import *
+from PyQt5.Qt import QWidget, pyqtSignal, QApplication, QLabel, QPushButton, Qt, QLineEdit
 import sys
 from Run import find_info
 
@@ -57,7 +57,9 @@ class Search(QWidget):
         if dic['status'] == 0:
             self.search_sg.emit(dic)
         else:
-            self.search.setStyleSheet('font-size:{}px;border-radius:{}px;border:4px solid;border-color:red'.format(int(self.zr * 16), self.zr * 15))
+            self.search.setStyleSheet(
+                'font-size:{}px;border-radius:{}px;border:4px solid;border-color:red'.format(int(self.zr * 16),
+                                                                                             self.zr * 15))
             self.search.clear()
             self.search.setPlaceholderText('ID不存在')
 
