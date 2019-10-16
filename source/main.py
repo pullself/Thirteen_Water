@@ -19,6 +19,7 @@ def show_mainindex(ids, token):
     global usr_id
     global token_p
     print(token)
+    print(ids)
     usr_id = ids
     token_p = token
     ind.hide()

@@ -18,7 +18,6 @@ mccabe==0.6.1
 numpy==1.16.5
 parsedatetime==2.4
 pathlib==1.0.1
-poker==0.30.0
 pycparser==2.19
 pylint==2.3.1
 pyOpenSSL==19.0.0

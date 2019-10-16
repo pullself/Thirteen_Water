@@ -1,4 +1,4 @@
-from ._common import PokerEnum
+from _common import PokerEnum
 
 
 class PokerRoom(PokerEnum):

@@ -1,5 +1,5 @@
-from poker import Card
-from poker import Rank
+from card import Rank
+from card import Card
 import random
 import pickle
 import requests

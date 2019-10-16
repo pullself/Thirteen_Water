@@ -5,8 +5,8 @@ import functools
 from decimal import Decimal
 from pathlib import Path
 from cached_property import cached_property
-from ._common import PokerEnum, _ReprMixin
-from .card import Rank, Card, BROADWAY_RANKS
+from _common import PokerEnum, _ReprMixin
+from card import Rank, Card, BROADWAY_RANKS
 
 
 __all__ = [

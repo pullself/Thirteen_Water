@@ -34,21 +34,26 @@ def login(ac, psw):
 
 def srank(id, token):
     url = "https://api.shisanshui.rtxux.xyz/history"
-    querystring = {"page": 1, "limit": 20, "player_id": id}
+    querystring = {"page": 1, "limit": 18, "player_id": id}
     headers = {'x-auth-token': token}
     response = requests.request("GET", url, headers=headers, params=querystring)
     result = response.text.encode("utf8")
     result = json.loads(result)
-    if result != '':
-        status = result['status']
-        data = result['data']
-        need = {'status': status, 'details': []}
-        for j in range(20):
-            a = data[j]
-            flag = {'id': a['id'], 'score': a['score'], 'time': a['timestamp']}
-            need['details'].append(flag)
+    print(result)
+    if result != '' and result['status'] == 0:
+        try:
+            status = result['status']
+            data = result['data']
+            need = {'status': status, 'details': []}
+            for j in range(20):
+                a = data[j]
+                flag = {'id': a['id'], 'score': a['score'], 'time': a['timestamp']}
+                need['details'].append(flag)
+        except:
+            need = {'status': 1}
     else:
         need = {'status': 1}
+    print(need)
     return need
 
 
@@ -58,15 +63,18 @@ def rank():
     result = response.text.encode("utf8")
     result = json.loads(result)
     if result != '':
-        need = {'status': 0, 'details': []}
-        for i in range(len(result)):
-            a = result[i]
-            flag = {'id': a['player_id'], 'name': a['name'], 'score': a['score']}
-            need['details'].append(flag)
+        try:
+            need = {'status': 0, 'details': []}
+            for i in range(len(result)):
+                a = result[i]
+                flag = {'id': a['player_id'], 'name': a['name'], 'score': a['score']}
+                need['details'].append(flag)
+        except:
+            need = {'status': 1}
     else:
         need = {'status': 1}
     return need
 
 
 if __name__ == "__main__":
-    register('scksck', '123456')
+    rank()
