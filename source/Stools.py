@@ -1,5 +1,6 @@
 import requests
 import json
+import time
 
 
 def change_vertical(ori):
@@ -47,7 +48,9 @@ def srank(id, token):
             need = {'status': status, 'details': []}
             for j in range(18):
                 a = data[j]
-                flag = {'id': a['id'], 'score': a['score'], 'time': a['timestamp']}
+                time_array = time.localtime(a['timestamp'])
+                time_str = time.strftime("%Y-%m-%d %H:%M:%S",time_array)
+                flag = {'id': a['id'], 'score': a['score'], 'time': time_str}
                 need['details'].append(flag)
         except:
             need = {'status': 1}
@@ -77,4 +80,4 @@ def rank():
 
 
 if __name__ == "__main__":
-    srank(1050, "e2ddd6e7-d576-4cef-b221-aed8c4171826")
+    srank(1050, "d0b4a33d-22c2-43cf-92ff-0af2b63a21ee")
