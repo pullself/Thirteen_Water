@@ -45,7 +45,7 @@ def srank(id, token):
             status = result['status']
             data = result['data']
             need = {'status': status, 'details': []}
-            for j in range(20):
+            for j in range(18):
                 a = data[j]
                 flag = {'id': a['id'], 'score': a['score'], 'time': a['timestamp']}
                 need['details'].append(flag)
@@ -77,4 +77,4 @@ def rank():
 
 
 if __name__ == "__main__":
-    rank()
+    srank(1050, "e2ddd6e7-d576-4cef-b221-aed8c4171826")
